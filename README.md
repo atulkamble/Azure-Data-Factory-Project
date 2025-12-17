@@ -135,10 +135,9 @@ az datafactory factory create \
 
 ```json
 {
-  "name": "SinkDataset",
   "properties": {
     "linkedServiceName": {
-      "referenceName": "AzureBlobStorageLS",
+      "referenceName": "AzureBlobStorage1",
       "type": "LinkedServiceReference"
     },
     "type": "DelimitedText",
