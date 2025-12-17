@@ -109,7 +109,9 @@ az datafactory create \
 - **Name:** AzureBlobStorage1
 - **Connection Method:** Connection String
 
-**JSON Configuration:**
+## 🔹 Step 7: Create Linked Service (Blob Storage)
+
+### Linked Service JSON
 
 ```json
 {
@@ -121,6 +123,8 @@ az datafactory create \
   }
 }
 ```
+
+---
 
 ## 🔹 Step 8: Create Datasets
 
@@ -177,6 +181,8 @@ az datafactory create \
   }
 }
 ```
+
+---
 
 ## 🔹 Step 9: Create Pipeline
 
@@ -252,157 +258,63 @@ az storage blob download \
 
 ---
 
-# 🤖 Method 2: Infrastructure as Code (Terraform)
+## � Infrastructure as Code (Terraform)
 
-## 🚀 Quick Start
+This project now includes **Terraform Infrastructure as Code** for automated deployment!
+
+### 🚀 Quick Deploy with Terraform
 
 ```bash
-# Clone or navigate to project
 cd terraform/
-
-# Initialize Terraform
 terraform init
-
-# Review deployment plan
 terraform plan
-
-# Deploy infrastructure
-terraform apply -auto-approve
+terraform apply
 ```
 
-## 🎯 What Gets Created Automatically
+### 🎯 What Terraform Creates
 
-| Resource | Name | Description |
-|----------|------|-------------|
-| 📁 Resource Group | `adf-rg` | Container for all resources |
-| 💾 Storage Account | `adfstoragedemo123` | Blob storage for data |
-| 📦 Source Container | `source` | Container with input.txt |
-| 📦 Destination Container | `destination` | Target for copied data |
-| 🏭 Data Factory | `adf-simple-demo` | ETL orchestration service |
-| 🔗 Linked Service | `AzureBlobStorage1` | Connection to storage |
-| 📋 Source Dataset | `SourceDataset` | Points to input.txt |
-| 📋 Sink Dataset | `SinkDataset` | Points to output.txt |
-| 🔄 Pipeline | `CopyBlobPipeline` | Copy activity workflow |
-| ⏰ Trigger | `DailyTrigger` | Scheduled execution (disabled) |
-| 📄 Sample Data | `input.txt` | Auto-uploaded test file |
+- ✅ Resource Group (`adf-rg`)
+- ✅ Storage Account (`adfstoragedemo123`)
+- ✅ Blob Containers (`source`, `destination`)
+- ✅ Azure Data Factory (`adf-simple-demo`)
+- ✅ Linked Service (Blob Storage connection)
+- ✅ Datasets (Source and Sink for delimited text)
+- ✅ Pipeline (Copy activity from source to destination)
+- ✅ Scheduled Trigger (Daily at 9 AM, disabled by default)
+- ✅ Sample Data (`input.txt` automatically uploaded)
 
-## ⚙️ Terraform Configuration
+### 📁 Terraform Structure
 
-### 📁 File Structure
 ```
 terraform/
-├── main.tf                    # Infrastructure resources
-├── variables.tf              # Input parameters  
-├── outputs.tf               # Resource information
-├── terraform.tfvars.example # Configuration template
-├── deploy.sh               # Automated deployment
-├── README.md              # Terraform docs
-└── .gitignore            # Git exclusions
+├── main.tf              # Main infrastructure configuration
+├── variables.tf         # Input variables
+├── outputs.tf          # Output values
+├── terraform.tfvars.example  # Example variables
+├── deploy.sh           # Automated deployment script
+├── README.md           # Terraform documentation
+└── .gitignore         # Terraform-specific gitignore
 ```
 
-### 🎛️ Customization
-
-1. **Copy example config:**
-   ```bash
-   cp terraform.tfvars.example terraform.tfvars
-   ```
-
-2. **Edit values:**
-   ```hcl
-   resource_group_name   = "my-adf-rg"
-   location              = "West US 2"
-   storage_account_name  = "mystorageaccount123"
-   data_factory_name     = "my-data-factory"
-   environment          = "Production"
-   ```
-
-## 🧪 Testing the Deployment
+### 🧪 Test the Pipeline
 
 ```bash
-# Trigger pipeline manually
+# Trigger pipeline run
 az datafactory pipeline create-run \
   --factory-name adf-simple-demo \
   --resource-group adf-rg \
   --name CopyBlobPipeline
 
-# Monitor run status
-az datafactory pipeline-run show \
-  --factory-name adf-simple-demo \
-  --resource-group adf-rg \
-  --run-id <RUN_ID>
-
-# Verify results
+# Check results
 az storage blob list \
   --account-name adfstoragedemo123 \
   --container-name destination \
   --output table
 ```
 
-## 🧹 Cleanup
-
-```bash
-# Destroy all resources
-terraform destroy -auto-approve
-```
-
 ---
 
-# 📊 Comparison: Manual vs Terraform
+## �📌 Interview / Training One-Line Explanation
 
-| Aspect | Manual Setup | Terraform |
-|--------|--------------|-----------|
-| ⏱️ **Setup Time** | 30-60 minutes | 5 minutes |
-| 🔄 **Repeatability** | Manual errors possible | 100% consistent |
-| 📝 **Documentation** | Screenshots/notes | Self-documenting code |
-| 🔧 **Customization** | Portal configuration | Variables & parameters |
-| 🏢 **Enterprise Ready** | Manual governance | Version controlled |
-| 🧹 **Cleanup** | Manual deletion | One command |
-| 📈 **Scaling** | Repeat manually | Copy/modify code |
-| 🛡️ **Best Practices** | Depends on user | Built-in standards |
+> *Azure Data Factory is a cloud-based ETL service used to move and transform data between different data sources using pipelines.*
 
----
-
-## 🧠 Key Concepts Covered
-
-- **Azure Data Factory**: Cloud ETL/ELT service
-- **Linked Service**: Connection to external data stores
-- **Dataset**: Pointer to specific data in a linked service
-- **Pipeline**: Container for activities that perform tasks
-- **Copy Activity**: Transfers data between source and sink
-- **Trigger**: Mechanism to execute pipelines
-- **Infrastructure as Code**: Automated, version-controlled deployments
-
----
-
-## 🎯 Learning Outcomes
-
-After completing this project, you will understand:
-
-1. **Manual Azure Data Factory Configuration**
-   - Creating and configuring ADF components via Azure Portal
-   - Understanding the relationship between datasets, pipelines, and activities
-   - Monitoring and troubleshooting pipeline runs
-
-2. **Infrastructure as Code with Terraform**
-   - Automating Azure resource deployment
-   - Managing infrastructure through version control
-   - Implementing repeatable, scalable cloud architectures
-
-3. **Best Practices**
-   - Security considerations for data movement
-   - Resource naming conventions and organization
-   - Monitoring and operational excellence
-
----
-
-## 📚 Additional Resources
-
-- 📖 [Azure Data Factory Documentation](https://docs.microsoft.com/en-us/azure/data-factory/)
-- 🏗️ [Terraform Azure Provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
-- 🎓 [Azure Data Factory Learning Path](https://docs.microsoft.com/en-us/learn/paths/data-integration-scale-azure-data-factory/)
-
----
-
-## 📌 One-Line Summary
-
-> *Azure Data Factory is a cloud-based ETL service that enables automated data movement and transformation between various data sources using configurable pipelines, deployable through both manual configuration and Infrastructure as Code approaches.*
