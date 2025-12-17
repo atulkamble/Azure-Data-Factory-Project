@@ -59,6 +59,11 @@ az storage container create \
 
 ---
 
+## create file 
+```
+echo "Hello World" >> input.txt
+cat ./input.txt
+```
 ## 🔹 Step 4: Upload Sample File
 
 ```bash
@@ -70,11 +75,14 @@ az storage blob upload \
 ```
 
 ---
-
+## install extension 
+```
+az extension add --name datafactory
+```
 ## 🔹 Step 5: Create Azure Data Factory
 
 ```bash
-az datafactory factory create \
+az datafactory create \
   --resource-group adf-rg \
   --factory-name adf-simple-demo \
   --location eastus
