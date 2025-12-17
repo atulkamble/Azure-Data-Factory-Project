@@ -95,7 +95,6 @@ az datafactory factory create \
 
 ```json
 {
-  "name": "AzureBlobStorageLS",
   "properties": {
     "type": "AzureBlobStorage",
     "typeProperties": {
