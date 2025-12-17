@@ -1,0 +1,2 @@
+Hello World
+Sample data for Azure Data Factory demo

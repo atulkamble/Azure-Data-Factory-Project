@@ -1,0 +1,8 @@
+# Copy this file to terraform.tfvars and customize the values
+
+resource_group_name   = "adf-rg"
+location              = "East US"
+storage_account_name  = "adfstoragedemo123"  # Must be globally unique
+data_factory_name     = "adf-simple-demo"
+environment          = "Demo"
+project_name         = "Azure-Data-Factory"

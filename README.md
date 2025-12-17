@@ -233,7 +233,63 @@ az datafactory create \
 
 ---
 
-## 📌 Interview / Training One-Line Explanation
+## � Infrastructure as Code (Terraform)
+
+This project now includes **Terraform Infrastructure as Code** for automated deployment!
+
+### 🚀 Quick Deploy with Terraform
+
+```bash
+cd terraform/
+terraform init
+terraform plan
+terraform apply
+```
+
+### 🎯 What Terraform Creates
+
+- ✅ Resource Group (`adf-rg`)
+- ✅ Storage Account (`adfstoragedemo123`)
+- ✅ Blob Containers (`source`, `destination`)
+- ✅ Azure Data Factory (`adf-simple-demo`)
+- ✅ Linked Service (Blob Storage connection)
+- ✅ Datasets (Source and Sink for delimited text)
+- ✅ Pipeline (Copy activity from source to destination)
+- ✅ Scheduled Trigger (Daily at 9 AM, disabled by default)
+- ✅ Sample Data (`input.txt` automatically uploaded)
+
+### 📁 Terraform Structure
+
+```
+terraform/
+├── main.tf              # Main infrastructure configuration
+├── variables.tf         # Input variables
+├── outputs.tf          # Output values
+├── terraform.tfvars.example  # Example variables
+├── deploy.sh           # Automated deployment script
+├── README.md           # Terraform documentation
+└── .gitignore         # Terraform-specific gitignore
+```
+
+### 🧪 Test the Pipeline
+
+```bash
+# Trigger pipeline run
+az datafactory pipeline create-run \
+  --factory-name adf-simple-demo \
+  --resource-group adf-rg \
+  --name CopyBlobPipeline
+
+# Check results
+az storage blob list \
+  --account-name adfstoragedemo123 \
+  --container-name destination \
+  --output table
+```
+
+---
+
+## �📌 Interview / Training One-Line Explanation
 
 > *Azure Data Factory is a cloud-based ETL service used to move and transform data between different data sources using pipelines.*
 
