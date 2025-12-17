@@ -112,10 +112,9 @@ az datafactory factory create \
 
 ```json
 {
-  "name": "SourceDataset",
   "properties": {
     "linkedServiceName": {
-      "referenceName": "AzureBlobStorageLS",
+      "referenceName": "AzureBlobStorage1",
       "type": "LinkedServiceReference"
     },
     "type": "DelimitedText",
@@ -124,7 +123,9 @@ az datafactory factory create \
         "type": "AzureBlobStorageLocation",
         "container": "source",
         "fileName": "input.txt"
-      }
+      },
+      "columnDelimiter": ",",
+      "firstRowAsHeader": true
     }
   }
 }
