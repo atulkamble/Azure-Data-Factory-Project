@@ -1,14 +1,6 @@
 # 🚀 Azure Data Factory Project
 
-![Image](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/images/enterprise-bi-adf.png)
-
-![Image](https://alltechmagazine.com/storage/2023/08/Azure-Data-Factory.webp)
-
-![Image](https://learn.microsoft.com/en-us/azure/data-factory/media/concepts-integration-runtime/integration-runtime-location.png)
-
-![Image](https://learn.microsoft.com/en-us/azure/data-factory/media/create-self-hosted-integration-runtime/high-level-overview.png)
-
-## **Azure Data Factory (ADF) — Short Notes**
+## **Azure Data Factory (ADF)**
 
 ### 🔹 What is ADF?
 
