@@ -1,5 +1,87 @@
 # 🚀 Azure Data Factory Project
 
+![Image](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/images/enterprise-bi-adf.png)
+
+![Image](https://alltechmagazine.com/storage/2023/08/Azure-Data-Factory.webp)
+
+![Image](https://learn.microsoft.com/en-us/azure/data-factory/media/concepts-integration-runtime/integration-runtime-location.png)
+
+![Image](https://learn.microsoft.com/en-us/azure/data-factory/media/create-self-hosted-integration-runtime/high-level-overview.png)
+
+## **Azure Data Factory (ADF) — Short Notes**
+
+### 🔹 What is ADF?
+
+Azure Data Factory is a **cloud-based ETL/ELT and data integration service** used to **ingest, transform, and move data** across multiple sources (on-prem & cloud).
+
+---
+
+## 🧩 Core Components (Must Remember)
+
+* **Pipeline** → Logical group of activities (workflow)
+* **Activity** → Task inside a pipeline (Copy, Data Flow, Lookup, etc.)
+* **Dataset** → Structure/metadata of data (table, file, blob)
+* **Linked Service** → Connection details to data sources
+* **Integration Runtime (IR)** → Compute engine for data movement
+
+---
+
+## ⚙️ Integration Runtime Types
+
+* **Azure IR** → Cloud-to-cloud data movement
+* **Self-hosted IR** → On-prem ↔ Azure (firewall-friendly)
+* **Azure-SSIS IR** → Run SSIS packages in Azure
+
+📌 *IR decides **where** data processing happens.*
+
+---
+
+## 🔁 Common Activities
+
+* **Copy Activity** → Move data (most used)
+* **Data Flow** → Visual data transformation (Spark-based)
+* **Lookup / Get Metadata**
+* **ForEach / If Condition**
+* **Stored Procedure / Web Activity**
+
+---
+
+## 🚀 Triggers (How pipelines run)
+
+* **Schedule Trigger** → Time-based
+* **Tumbling Window** → Fixed intervals, dependency-aware
+* **Event Trigger** → Blob/file arrival
+
+---
+
+## 🔐 Security & Monitoring
+
+* Supports **Azure Key Vault** for secrets
+* **RBAC** for access control
+* **Azure Monitor + Logs** for debugging & alerts
+
+---
+
+## 💡 Key Points to Remember (Interview Gold ⭐)
+
+* ADF is **serverless** (no infra management)
+* Used for **ETL & ELT** (transform before or after load)
+* Data Flow uses **Apache Spark** behind the scenes
+* Pricing based on **pipeline runs, activity runs, IR hours**
+* Supports **Git integration & CI/CD**
+
+---
+
+## 📌 When to Use ADF?
+
+✔ Large-scale data ingestion
+✔ Hybrid data integration
+✔ Data warehouse / lake pipelines
+✔ Replacement for SSIS (cloud-native)
+
+---
+
+
 ## 🎯 Project Overview
 
 **Copy a text file from Azure Blob Storage (Source) to another Blob container (Sink)** using **Azure Data Factory**.
